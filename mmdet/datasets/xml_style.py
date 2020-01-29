@@ -43,7 +43,13 @@ class XMLDataset(CustomDataset):
         bboxes_ignore = []
         labels_ignore = []
         for obj in root.findall('object'):
-            name = obj.find('name').text
+            #name = obj.find('name').text
+            if obj.find('name').text == "Dents" or obj.find('name').text == "Dent":
+                name = "Dent"
+            elif obj.find('name').text == "Scratch_or_spot":
+                name = "Scratch_or_spot"
+            else:
+                continue
             label = self.cat2label[name]
             difficult = int(obj.find('difficult').text)
             bnd_box = obj.find('bndbox')
