@@ -14,7 +14,9 @@ from mmdet.apis import get_root_logger, set_random_seed, train_detector
 from mmdet.datasets import build_dataset
 from mmdet.models import build_detector
 
-
+import warnings
+warnings.simplefilter("error")
+warnings.simplefilter("ignore", DeprecationWarning)
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a detector')
     parser.add_argument('config', help='train config file path')
