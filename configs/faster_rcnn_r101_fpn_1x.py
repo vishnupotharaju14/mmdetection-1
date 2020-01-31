@@ -158,17 +158,17 @@ lr_config = dict(
 checkpoint_config = dict(interval=1)
 # yapf:disable
 log_config = dict(
-    interval=50,
+    interval=5,
     hooks=[
         dict(type='TextLoggerHook'),
-        # dict(type='TensorboardLoggerHook')
+        dict(type='TensorboardLoggerHook')
     ])
 # yapf:enable
 # runtime settings
 total_epochs = 10
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = '/content/work_dirs/faster_rcnn_r101_fpn_1x'
+work_dir = '/content/work_dirs1/faster_rcnn_r101_fpn_1x'
 load_from = None
 resume_from = None
 workflow = [('train', 1)]
