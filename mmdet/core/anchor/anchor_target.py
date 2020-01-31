@@ -17,7 +17,6 @@ def anchor_target(anchor_list,
                   sampling=True,
                   unmap_outputs=True):
     """Compute regression and classification targets for anchors.
-
     Args:
         anchor_list (list[list]): Multi level anchors of each image.
         valid_flag_list (list[list]): Multi level valid flags of each image.
@@ -26,7 +25,6 @@ def anchor_target(anchor_list,
         target_means (Iterable): Mean value of regression targets.
         target_stds (Iterable): Std value of regression targets.
         cfg (dict): RPN train configs.
-
     Returns:
         tuple
     """
@@ -78,7 +76,6 @@ def anchor_target(anchor_list,
 
 def images_to_levels(target, num_level_anchors):
     """Convert targets by image to targets by feature level.
-
     [target_img0, target_img1] -> [target_level0, target_level1, ...]
     """
     target = torch.stack(target, 0)
@@ -166,10 +163,10 @@ def anchor_inside_flags(flat_anchors,
     img_h, img_w = img_shape[:2]
     if allowed_border >= 0:
         inside_flags = valid_flags & \
-            (flat_anchors[:, 0] >= -allowed_border).type(torch.unit8) & \
-            (flat_anchors[:, 1] >= -allowed_border).type(torch.unit8) & \
-            (flat_anchors[:, 2] < img_w + allowed_border).type(torch.unit8) & \
-            (flat_anchors[:, 3] < img_h + allowed_border).type(torch.unit8)
+            (flat_anchors[:, 0] >= -allowed_border).type(torch.uint8) & \
+            (flat_anchors[:, 1] >= -allowed_border).type(torch.uint8) & \
+            (flat_anchors[:, 2] < img_w + allowed_border).type(torch.uint8) & \
+            (flat_anchors[:, 3] < img_h + allowed_border).type(torch.uint8)
     else:
         inside_flags = valid_flags
     return inside_flags
