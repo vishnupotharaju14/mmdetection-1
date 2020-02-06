@@ -168,7 +168,7 @@ log_config = dict(
 total_epochs = 5
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = '/content/work_dirs1/faster_rcnn_r101_fpn_1x'
+work_dir = '/content/work_dirs2/faster_rcnn_r101_fpn_1x'
 load_from = None
 resume_from = None # "/content/drive/My Drive/DL/epoch_8.pth"
 workflow = [('train', 1)]
