@@ -105,7 +105,7 @@ img_norm_cfg = dict(
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations', with_bbox=True),
-    dict(type='Resize', img_scale=(1000, 600), keep_ratio=True),
+    dict(type='Resize', img_scale=(1333, 800), keep_ratio=True),
     dict(type='RandomFlip', flip_ratio=0.5),
     dict(type='Normalize', **img_norm_cfg),
     dict(type='Pad', size_divisor=32),
@@ -116,7 +116,7 @@ test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='MultiScaleFlipAug',
-        img_scale=(1000, 600),
+        img_scale=(1333, 800),
         flip=False,
         transforms=[
             dict(type='Resize', keep_ratio=True),
@@ -128,8 +128,8 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    imgs_per_gpu=2,
-    workers_per_gpu=2,
+    imgs_per_gpu=5,
+    workers_per_gpu=5,
     train=dict(
         type=dataset_type,
         ann_file=data_root + 'train.txt',
@@ -158,17 +158,17 @@ lr_config = dict(
 checkpoint_config = dict(interval=1)
 # yapf:disable
 log_config = dict(
-    interval=5,
+    interval=150,
     hooks=[
         dict(type='TextLoggerHook'),
         dict(type='TensorboardLoggerHook')
     ])
 # yapf:enable
 # runtime settings
-total_epochs = 10
+total_epochs = 5
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
 work_dir = '/content/work_dirs1/faster_rcnn_r101_fpn_1x'
 load_from = None
-resume_from = "/content/drive/My Drive/DL/epoch_8.pth"
+resume_from = None # "/content/drive/My Drive/DL/epoch_8.pth"
 workflow = [('train', 1)]
