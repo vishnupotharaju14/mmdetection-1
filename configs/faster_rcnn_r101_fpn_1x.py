@@ -99,7 +99,7 @@ test_cfg = dict(
 )
 # dataset settings
 dataset_type = 'MyDataset'
-data_root = '/content/data/images/'
+data_root = '/content/drive/My Drive/R-FCN/data/images/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 train_pipeline = [
@@ -168,7 +168,7 @@ log_config = dict(
 total_epochs = 5
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = '/content/work_dirs2/faster_rcnn_r101_fpn_1x'
+work_dir = '/content/work_dirs/faster_rcnn_r101_fpn_1x'
 load_from = None
 resume_from = None # "/content/drive/My Drive/DL/epoch_8.pth"
 workflow = [('train', 1)]
