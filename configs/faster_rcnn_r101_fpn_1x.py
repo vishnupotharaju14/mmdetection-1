@@ -37,7 +37,8 @@ model = dict(
         in_channels=256,
         fc_out_channels=1024,
         roi_feat_size=7,
-        num_classes=3,
+        # num_classes=3,
+        num_classes=2,
         target_means=[0., 0., 0., 0.],
         target_stds=[0.1, 0.1, 0.2, 0.2],
         reg_class_agnostic=False,
@@ -99,7 +100,7 @@ test_cfg = dict(
 )
 # dataset settings
 dataset_type = 'MyDataset'
-data_root = '/content/data/images/'
+data_root = '/content/BloodCell/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 train_pipeline = [
@@ -128,8 +129,8 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    imgs_per_gpu=3,
-    workers_per_gpu=3,
+    imgs_per_gpu=12,
+    workers_per_gpu=12,
     train=dict(
         type=dataset_type,
         ann_file=data_root + 'train.txt',
@@ -137,7 +138,7 @@ data = dict(
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
-        ann_file=data_root + 'train.txt',
+        ann_file=data_root + 'val.txt',
         img_prefix=data_root ,
         pipeline=test_pipeline),
     test=dict(
@@ -165,7 +166,7 @@ log_config = dict(
     ])
 # yapf:enable
 # runtime settings
-total_epochs = 5
+total_epochs = 10
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
 work_dir = '/content/work_dirs/faster_rcnn_r101_fpn_1x'
