@@ -5,4 +5,5 @@ from .voc import VOCDataset
 @DATASETS.register_module
 class MyDataset(XMLDataset):
 
-    CLASSES =('Dent', 'Scratch_or_spot')#, 'Shatter', 'Tear')
+    # CLASSES =('Dent', 'Scratch_or_spot')#, 'Shatter', 'Tear')
+    CLASSES = ('RBC')
