@@ -6,4 +6,4 @@ from .voc import VOCDataset
 class MyDataset(XMLDataset):
 
     # CLASSES =('Dent', 'Scratch_or_spot')#, 'Shatter', 'Tear')
-    CLASSES = ('RBC')
+    CLASSES = ('pothole')
